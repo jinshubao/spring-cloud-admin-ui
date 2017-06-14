@@ -1,5 +1,5 @@
 <template>
-    <el-col :span="24" class="toolbar">
+    <el-row class="toolbar">
         <el-form :inline="true">
             <el-form-item>
                 <el-input v-model="keyword" placeholder="关键字"></el-input>
@@ -8,7 +8,7 @@
                 <el-button type="primary" @click="searchByKeyword(keyword)">查询</el-button>
             </el-form-item>
         </el-form>
-    </el-col>
+    </el-row>
 </template>
 <script>
     export default {
