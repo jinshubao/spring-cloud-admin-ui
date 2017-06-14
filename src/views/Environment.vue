@@ -1,7 +1,7 @@
 <template>
     <section>
         <search-bar @search="searchByKeyword"></search-bar>
-        <property-sheet v-for="(item, index) in envs" :title="item.title" :properties="item.properties" :key="index"></property-sheet>
+        <property-sheet v-for="(item, index) in envs" :title="item.title" :properties="item.properties" :key="index" @editProperty="editProperty" @deleteProperty="deleteProperty"></property-sheet>
     </section>
 </template>
 <script>
@@ -44,6 +44,14 @@
                     }
                     this.loading = false;
                 });
+            },
+
+            deleteProperty(property){
+                console.info(property);
+            },
+
+            editProperty(property){
+                console.info(property);
             }
 
         },

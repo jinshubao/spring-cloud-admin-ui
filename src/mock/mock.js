@@ -183,7 +183,7 @@ export default {
                     resolve([200, {
                         result: _Environments
                     }]);
-                }, 1000);
+                }, 10);
             });
         });
 
