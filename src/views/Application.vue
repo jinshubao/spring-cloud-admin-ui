@@ -15,7 +15,7 @@
             }
         },
         methods: {
-            getApplication: function (name) {
+            getApplication (name) {
                 let param = {
                     name: name
                 };

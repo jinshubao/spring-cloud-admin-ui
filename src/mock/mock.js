@@ -1,10 +1,12 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import {LoginUsers, Users} from './data/user';
-import {Applications} from './data/Application';
+import axios from "axios";
+import MockAdapter from "axios-mock-adapter";
+import {LoginUsers, Users} from "./data/user";
+import {Applications} from "./data/Application";
+import {Environment} from "./data/Environment";
 let _Users = Users;
 
 let _Applications = Applications;
+let _Environments = Environment;
 
 export default {
     /**
@@ -169,6 +171,17 @@ export default {
                 setTimeout(() => {
                     resolve([200, {
                         result: mockApplications
+                    }]);
+                }, 1000);
+            });
+        });
+
+        //获取application
+        mock.onGet('/environments').reply(config => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve([200, {
+                        result: _Environments
                     }]);
                 }, 1000);
             });

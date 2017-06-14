@@ -17,3 +17,5 @@ export const editUser = params => { return axios.get(`${base}/user/edit`, { para
 export const addUser = params => { return axios.get(`${base}/user/add`, { params: params }); };
 
 export const getApplications = params => { return axios.get(`${base}/applications`, { params: params }); };
+
+export const getEnvironments = params => { return axios.get(`${base}/environments`, { params: params }); };

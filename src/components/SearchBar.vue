@@ -11,7 +11,9 @@
     </el-row>
 </template>
 <script>
+    import ElRow from "element-ui/packages/row/src/row";
     export default {
+        components: {ElRow},
         data() {
             return {
                 keyword: ''
@@ -20,9 +22,6 @@
         methods: {
             searchByKeyword(keyword){
                 this.$emit('search', keyword)
-            },
-            searchInput(value){
-                this.$emit("searchInput", value)
             }
         },
         mounted() {

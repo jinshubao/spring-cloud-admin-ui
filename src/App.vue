@@ -17,7 +17,9 @@
         },
         methods: {},
         mounted() {
+            console.info('App mounted');
         }
+
     }
 
 </script>

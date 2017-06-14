@@ -1,43 +1,18 @@
 <template>
     <section>
         <search-bar @search="searchByKeyword"></search-bar>
-        <el-table v-for="(env, index) in envs" :key="index"
-                  :data="env"
-                  stripe
-                  border row-key="name">
-            <el-table-column
-                    prop="name"
-                    label="Property name">
-            </el-table-column>
-            <el-table-column
-                    prop="value">
-            </el-table-column>
-            <el-table-column>
-                <template scope="scope">
-                    <el-button
-                            size="small"
-                            @click="handleEdit(scope.$index, scope.row)">编辑
-                    </el-button>
-                    <el-button
-                            size="small"
-                            type="danger"
-                            @click="handleDelete(scope.$index, scope.row)">删除
-                    </el-button>
-                </template>
-            </el-table-column>
-        </el-table>
+        <property-sheet v-for="(item, index) in envs" :title="item.title" :properties="item.properties" :key="index"></property-sheet>
     </section>
 </template>
 <script>
     import SearchBar from './../components/SearchBar.vue'
+    import PropertySheet from './../components/PropertySheet.vue'
+    import {getEnvironments} from '../api/api';
     export default {
-        components: {SearchBar},
+        components: {SearchBar, PropertySheet},
         data() {
             return {
-                envs: [
-                    [{name: 'system', value: 'IOS'}, {name: 'system', value: 'IOS'}],
-                    [{name: 'system', value: 'IOS'}, {name: 'system', value: 'IOS'}, {name: 'system', value: 'IOS'}]
-                ]
+                envs: []
             }
         },
         methods: {
@@ -49,11 +24,32 @@
             },
             searchByKeyword(keyword){
                 console.info("keyword", keyword)
+            },
+            getEnvironment(name) {
+                let param = {
+                    name: name
+                };
+                this.loading = true;
+                getEnvironments(param).then((res) => {
+                    let result = res.data.result;
+                    // 向控制台输出对象的可枚举属性
+
+                    for (let key of Object.keys(result)) {
+                        let items = result[key];
+                        let properties = [];
+                        for (let item of Object.keys(items)) {
+                            properties.push({name: item, value: items[item]})
+                        }
+                        this.envs.push({title: key, properties: properties});
+                    }
+                    this.loading = false;
+                });
             }
 
         },
         mounted() {
-
+            console.info('Environment mounted');
+            this.getEnvironment()
         }
     }
 </script>
