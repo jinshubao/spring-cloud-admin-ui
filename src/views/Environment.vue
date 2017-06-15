@@ -1,7 +1,28 @@
 <template>
     <section>
         <search-bar @search="searchByKeyword"></search-bar>
-        <property-sheet v-for="(item, index) in envs" :title="item.title" :properties="item.properties" :key="index" @editProperty="editProperty" @deleteProperty="deleteProperty"></property-sheet>
+        <property-sheet v-for="(item, index) in envs"
+                        :title="item.title"
+                        :properties="item.properties"
+                        :key="index"
+                        @editProperty="editProperty"
+                        @deleteProperty="deleteProperty">
+        </property-sheet>
+        <el-dialog :title="currEditProperty.title"
+                   :visible.sync="dialogFormVisible"
+                   :close-on-click-modal="false">
+            <el-form :model="currEditProperty">
+                <el-form-item :label="currEditProperty.name">
+                    <el-input type="textarea" placeholder="" v-model="currEditProperty.value"
+                              :autosize="{ minRows: 1, maxRows: 20}"></el-input>
+                </el-form-item>
+
+            </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="editCommit(currEditProperty)" :loading="isEdit">确 定</el-button>
+            </div>
+        </el-dialog>
     </section>
 </template>
 <script>
@@ -12,17 +33,14 @@
         components: {SearchBar, PropertySheet},
         data() {
             return {
-                envs: []
+                envs: [],
+                isEdit: false,
+                dialogFormVisible: false,
+                currEditProperty: {}
             }
         },
         methods: {
-            handleEdit(index, row){
-
-            },
-            handleDelete(index, row){
-
-            },
-            searchByKeyword(keyword){
+            searchByKeyword: function (keyword) {
                 console.info("keyword", keyword)
             },
             getEnvironment(name) {
@@ -46,12 +64,29 @@
                 });
             },
 
-            deleteProperty(property){
-                console.info(property);
+            deleteProperty: function (property) {
+                this.$confirm('确认删除' + property.name + '吗?', '提示', {
+                    type: 'warning'
+                }).then(() => {
+                    setTimeout(() => {
+                    }, 2000);
+                }).catch(() => {
+
+                });
+
             },
 
-            editProperty(property){
-                console.info(property);
+            editProperty: function (property) {
+                this.currEditProperty = property;
+                this.dialogFormVisible = true;
+
+            },
+            editCommit: function (property) {
+                this.isEdit = true;
+                setTimeout(() => {
+                    this.isEdit = false;
+                    this.dialogFormVisible = false;
+                }, 2000);
             }
 
         },
