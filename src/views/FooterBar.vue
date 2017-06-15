@@ -1,16 +1,14 @@
 <template>
-    <el-row class="footer">
-        <el-col :span="24">
-           asdfasdfasdfasfdasdfasdfasdf
-        </el-col>
-    </el-row>
+    <div class="layout-copy">
+            2011-2016 &copy; TalkingData
+    </div>
 </template>
 <script>
     export default {
         data() {
             return {}
         },
-        methods() {
+        methods: {
 
         },
         mounted() {
@@ -18,3 +16,10 @@
         }
     }
 </script>
+<<style>
+    .layout-copy{
+        text-align: center;
+        padding: 10px 0 20px;
+        color: #9ea7b4;
+    }
+</style>

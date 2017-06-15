@@ -1,21 +1,23 @@
 <template>
-  <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
-    <h3 class="title">系统登录</h3>
-    <el-form-item prop="account">
-      <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="账号"></el-input>
-    </el-form-item>
-    <el-form-item prop="checkPass">
-      <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="密码"></el-input>
-    </el-form-item>
-    <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox>
-    <el-form-item style="width:100%;">
-      <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit2" :loading="logining">登录</el-button>
-      <!--<el-button @click.native.prevent="handleReset2">重置</el-button>-->
-    </el-form-item>
-  </el-form>
+  <Form :model="ruleForm2" ref="ruleForm2" :rules="rules2" class="login-container">
+        <h3 class="title">系统登录</h3>
+        <Form-item prop="account">
+            <Input type="text" v-model="ruleForm2.account" placeholder="账号">
+                <Icon type="ios-person-outline" slot="prepend"></Icon>
+            </Input>
+        </Form-item>
+        <Form-item prop="checkPass">
+            <Input type="password" v-model="ruleForm2.checkPass" placeholder="密码">
+                <Icon type="ios-locked-outline" slot="prepend"></Icon>
+            </Input>
+        </Form-item>
+        <Form-item>
+            <Button type="primary" @click="handleSubmit2" :loading="logining">登录</Button>
+        </Form-item>
+    </Form>
 </template>
 
-<script>
+<script ss>
   import { requestLogin } from '../api/api';
   export default {
     data() {

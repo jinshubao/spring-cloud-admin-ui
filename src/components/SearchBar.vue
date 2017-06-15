@@ -1,19 +1,15 @@
 <template>
-    <el-row class="toolbar">
-        <el-form :inline="true">
-            <el-form-item>
-                <el-input v-model="keyword" placeholder="关键字"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" @click="searchByKeyword(keyword)">查询</el-button>
-            </el-form-item>
-        </el-form>
-    </el-row>
+    <Row :gutter="16">
+        <Col span="12">
+            <Input v-model="keyword" placeholder="关键字"></Input>
+        </Col>
+        <Col span="12">
+            <Button type="primary" shape="circle" icon="ios-search" @click="searchByKeyword(keyword)">搜索</Button>
+        </Col>
+    </Row>
 </template>
 <script>
-    import ElRow from "element-ui/packages/row/src/row";
     export default {
-        components: {ElRow},
         data() {
             return {
                 keyword: ''

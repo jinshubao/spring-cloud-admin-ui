@@ -1,9 +1,7 @@
 <template>
-    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" router>
-        <el-menu-item :index="item.path" v-for="(item,index) in $router.options.routes" :key="item.path">
-            <i :class="item.iconCls"></i>{{item.name}}
-        </el-menu-item>
-    </el-menu>
+    <section>
+        
+    </section>
 </template>
 
 <script>
@@ -20,3 +18,42 @@
         }
     }
 </script>
+<style scoped>
+    .layout{
+        border: 1px solid #d7dde4;
+        background: #f5f7f9;
+    }
+    .layout-logo{
+        width: 100px;
+        height: 30px;
+        background: #5b6270;
+        border-radius: 3px;
+        float: left;
+        position: relative;
+        top: 15px;
+        left: 20px;
+    }
+    .layout-nav{
+        width: 420px;
+        margin: 0 auto;
+    }
+    .layout-assistant{
+        width: 300px;
+        margin: 0 auto;
+        height: inherit;
+    }
+    .layout-breadcrumb{
+        padding: 10px 15px 0;
+    }
+    .layout-content{
+        min-height: 200px;
+        margin: 15px;
+        overflow: hidden;
+        background: #fff;
+        border-radius: 4px;
+    }
+    .layout-content-main{
+        padding: 10px;
+    }
+
+</style>
