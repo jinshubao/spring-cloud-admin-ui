@@ -13,7 +13,7 @@ let routes = [
     {
         path: '/form',
         component: Form,
-        name: 'Form'
+        name: 'form'
     },
     {
         path: '/user',
@@ -33,23 +33,23 @@ let routes = [
     {
         path: '/environment',
         component: Environment,
-        name: 'environment'
+        name: '环境变量'
     },
     {
         path: '/application',
         component: Application,
-        name: 'application'
+        name: '应用程序'
     },
     {
         path: '/login',
         component: Login,
-        name: '',
+        name: '登陆',
         hidden: true
     },
     {
         path: '/404',
         component: NotFound,
-        name: '',
+        name: '404',
         hidden: true
     },
     {
