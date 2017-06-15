@@ -1,22 +1,21 @@
-import Vue from 'vue'
-import Iview from 'iview'
-import 'iview/dist/styles/iview.css'
-import App from './App.vue'
-import VueRouter from 'vue-router'
-import store from './vuex/store'
-import Vuex from 'vuex'
-import routes from './routes'
-import Mock from './mock'
+import Vue from "vue";
+import Vuex from "vuex";
+import store from "./vuex/store";
+import VueRouter from "vue-router";
+import Iview from "iview";
+import "iview/dist/styles/iview.css";
+import routes from "./routes";
+import App from "./App.vue";
+import Mock from "./mock";
 Mock.bootstrap();
+Vue.use(Vuex);
+Vue.use(VueRouter);
+Vue.use(Iview);
 
-
-Vue.use(Iview)
-Vue.use(VueRouter)
-Vue.use(Vuex)
 
 const router = new VueRouter({
     routes
-})
+});
 
 router.beforeEach((to, from, next) => {
     if (to.path == '/login') {
@@ -28,12 +27,12 @@ router.beforeEach((to, from, next) => {
     } else {
         next()
     }
-})
+});
 
 
 new Vue({
     router,
     store,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
 
