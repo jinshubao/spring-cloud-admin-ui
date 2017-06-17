@@ -157,10 +157,7 @@ export default {
 
         //获取application
         mock.onGet('/applications').reply(config => {
-
             let param = config.params;
-
-            console.log(param);
             let mockApplications = _Applications.filter(app => {
                 if (param && param.name) {
                     return app.name.indexOf(param.name) >= 0;

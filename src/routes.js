@@ -44,12 +44,12 @@ let routes = [
     {
         path: '/environment',
         component: Environment,
-        name: 'environment'
+        name: 'Environments'
     },
     {
         path: '/application',
         component: Application,
-        name: 'application'
+        name: 'Applications'
     },
     {
         path: '/login',

@@ -69,6 +69,7 @@
                     type: 'warning'
                 }).then(() => {
                     setTimeout(() => {
+                        console.info("delete success")
                     }, 2000);
                 }).catch(() => {
 
@@ -86,6 +87,7 @@
                 setTimeout(() => {
                     this.isEdit = false;
                     this.dialogFormVisible = false;
+                    console.info("edit success")
                 }, 2000);
             }
 

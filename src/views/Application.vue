@@ -19,7 +19,7 @@
                 let param = {
                     name: name
                 };
-                console.log(param);
+                console.log("param", param);
                 this.loading = true;
                 getApplications(param).then((res) => {
                     this.applications = res.data.result;
