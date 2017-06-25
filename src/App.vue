@@ -1,24 +1,33 @@
 <template>
-	<el-row id="app" class="container">
-		<header-bar></header-bar>
-		<main-container></main-container>
-	</el-row>
+    <div id="app">
+        <header-bar></header-bar>
+        <menu-bar>
+            <section slot="content">
+                <transition name="fade" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+            </section>
+        </menu-bar>
+        <!--<footer-bar></footer-bar>-->
+    </div>
 </template>
 
 <script>
     import HeaderBar from './views/HeaderBar.vue'
-    import MainContainer from './views/MainContainer.vue'
+    import MenuBar from './views/MenuBar.vue'
     import FooterBar from './views/FooterBar.vue'
+    import ElRow from "element-ui/packages/row/src/row";
     export default {
-        components: { HeaderBar, MainContainer,FooterBar},
+        components: {
+            ElRow,
+            HeaderBar, MenuBar, FooterBar
+        },
         data() {
-            return {
-            }
+            return {}
         },
         methods: {},
         mounted() {
             console.info('App mounted');
         }
-
     }
 </script>

@@ -59,10 +59,3 @@
 	};
 
 </script>
-
-<style scoped>
-	.toolbar {
-		padding-top: 20px;
-		padding-bottom: 0px;
-	}
-</style>

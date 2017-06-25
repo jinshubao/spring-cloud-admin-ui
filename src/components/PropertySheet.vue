@@ -10,12 +10,12 @@
                   empty-text="暂无数据"
                   border row-key="name">
             <el-table-column
-                    prop="name">
+                    prop="name" width="300">
             </el-table-column>
             <el-table-column
                     prop="value">
             </el-table-column>
-            <el-table-column>
+            <el-table-column width="200">
                 <template scope="scope">
                     <el-button v-show="mouseEnterRow == scope.row"
                                size="small"

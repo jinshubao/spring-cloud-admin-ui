@@ -1,17 +1,18 @@
 <template>
     <section>
-        <search-bar @search="getApplication" ></search-bar>
-            {{applications}}
+        <search-bar @search="getApplication"></search-bar>
+        {{applications}}
     </section>
 </template>
 <script>
-    import { getApplications } from '../api/api';
+    import {getApplications} from '../api/api';
+    import {JSONFormatter} from '../api/api';
     import SearchBar from './../components/SearchBar.vue'
     export default {
         components: {SearchBar},
         data() {
             return {
-                applications:[]
+                applications: []
             }
         },
         methods: {
@@ -27,6 +28,7 @@
                 });
             }
         },
+
         mounted() {
             this.getApplication()
         }
